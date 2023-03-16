@@ -1,20 +1,30 @@
 require('dotenv').config()
 const { Sequelize } = require('sequelize')
 const {
-  DB_USER,
-  DB_PASSWORD,
-  DB_HOST
+  DB_DEPLOY
 } = process.env
+
+//  const {  DB_USER,
+//   DB_PASSWORD,
+//   DB_HOST,} = process.env
 const dogsModel = require('../models/Dogs.js')
 const temperamentsModel = require('../models/Temperaments.js')
 
-const db = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs`,
+const db = new Sequelize(DB_DEPLOY,
   {
     logging: false,
     native: false,
     define: { timestamps: false }
   }
 )
+
+// const db = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs`,
+//   {
+//     logging: false,
+//     native: false,
+//     define: { timestamps: false }
+//   }
+// )
 
 // Modelos
 dogsModel(db)

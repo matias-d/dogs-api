@@ -10,7 +10,7 @@ async function getBreedByName (query) {
     const breedsFormat = data.map(breed => {
       const { id, name, weight, temperament, reference_image_id } = breed
       const { metric } = weight
-      return { id, name, metric, temperament, image : `https://cdn2.thedogapi.com/images/${reference_image_id}.jpg`  ,created: false }
+      return { id, name, metric, temperament, image: `https://cdn2.thedogapi.com/images/${reference_image_id}.jpg`, created: false }
     })
     temperamentsFormat(breedsFormat)
     parsedMetricFormat(breedsFormat, 'weight')
